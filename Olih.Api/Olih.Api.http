@@ -1,0 +1,6 @@
+@Olih.Api_HostAddress = http://localhost:5276
+
+GET {{Olih.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
