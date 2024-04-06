@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Olih.Api.Business.Interfaces;
 using Olih.Api.Models.Request;
@@ -14,11 +15,30 @@ namespace Olih.Api.Controllers
         private readonly ILogger<BranchesController> _logger = logger;
 
         [HttpGet]
-        public async Task<ActionResult<GetListBranchResponseModel>> ListBranchAsync(GetListBranchRequestModel requestModel)
+        public async Task<ActionResult<GetListBranchResponseModel>> ListBranchAsync(int? pageIndex, int? pageSize)
         {
-            var queryResult = await _branchService.GetListAsync(requestModel);
+
+            GetListBranchResponseModel queryResult = await _branchService.GetListAsync(new GetListBranchRequestModel{
+                PageIndex = pageIndex ?? 1,
+                PageSize = pageSize ?? 20
+            });
 
             if(queryResult == null || queryResult.Branches.Count == 0)
+            {
+                return NotFound();
+            }
+            
+            return Ok(queryResult);
+        } 
+
+        [HttpGet("/{id}")]
+        public async Task<ActionResult<GetOneBranchResponseModel>> ListBranchAsync([Required] int id)
+        {
+            GetOneBranchResponseModel queryResult = await _branchService.GetOneAsync(new GetOneBranchRequestModel{
+                BranchId = id
+            });
+
+            if(queryResult == null)
             {
                 return NotFound();
             }
