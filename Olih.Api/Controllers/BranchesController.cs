@@ -22,7 +22,7 @@ namespace Olih.Api.Controllers
 
             GetListBranchResponseModel queryResult = _branchService.GetList(new GetListBranchRequestModel
             {
-                PageIndex = pageIndex ?? 1,
+                PageIndex = pageIndex ?? 0,
                 PageSize = pageSize ?? 10
             });
 
