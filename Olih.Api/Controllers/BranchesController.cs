@@ -1,7 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.Net.Mime;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Olih.Api.Business.Interfaces;
 using Olih.Api.Models.Request;
@@ -17,52 +14,110 @@ namespace Olih.Api.Controllers
         private readonly ILogger<BranchesController> _logger = logger;
 
         [HttpGet]
-        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType<GetOneBranchResponseModel>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> RetriveListBranchAsync(int? pageIndex, int? pageSize)
+        public IActionResult RetriveListBranch(int? pageIndex, int? pageSize)
         {
 
-            GetListBranchResponseModel queryResult = await _branchService.GetListAsync(new GetListBranchRequestModel
+            GetListBranchResponseModel queryResult = _branchService.GetList(new GetListBranchRequestModel
             {
                 PageIndex = pageIndex ?? 1,
-                PageSize = pageSize ?? 20
+                PageSize = pageSize ?? 10
             });
 
-            if(queryResult == null || queryResult.Branches.Count == 0)
+            if (queryResult == null || queryResult.Branches.Count == 0)
             {
                 return NotFound();
             }
-            
-            return Ok(queryResult);
-        } 
 
-        [HttpGet]
-        [Route("{id}")]
-        [Consumes(MediaTypeNames.Application.Json)]
+            return Ok(queryResult);
+        }
+
+        [HttpGet("{id}")]
         [ProducesResponseType<GetOneBranchResponseModel>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> RetriveOneBranchAsync([Required] string id)
+        public IActionResult RetriveOneBranch([Required] string id)
         {
-             if(id.Length>=2)
+            if (id.Length != 3)
             {
-                 return BadRequest();
+                return BadRequest("branch id length must be 3");
             }
-            GetOneBranchResponseModel queryResult = await _branchService.GetOneAsync(new GetOneBranchRequestModel
+            GetOneBranchResponseModel queryResult = _branchService.GetOne(new GetOneBranchRequestModel
             {
                 BranchId = id
             });
 
-           
-            if(queryResult == null)
+
+            if (queryResult == null)
             {
                 return NotFound();
             }
-            
-            return Ok(queryResult);
-        } 
 
+            return Ok(queryResult);
+        }
+
+        [HttpPost]
+        [ProducesResponseType<CreateBranchResponseModel>(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult CreateBranch([Required] string branchId, [Required] string branchName)
+        {
+            if (branchId.Length != 3)
+            {
+                return BadRequest("branch id length must be 3");
+            }
+            if (string.IsNullOrWhiteSpace(branchName))
+            {
+                return BadRequest("branch name not valid");
+            }
+            CreateBranchResponseModel creationResult = _branchService.Create(new CreateBranchRequestModel
+            {
+                BranchId = branchId,
+                BranchName = branchName
+            });
+            var uri = Url.Action(nameof(RetriveOneBranch), new { id = creationResult.BranchId });
+
+            return Created(branchId, creationResult);
+        }
+
+        [HttpPut]
+        [ProducesResponseType<CreateBranchResponseModel>(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateBranch([Required] string branchId, [Required] string branchName)
+        {
+            if (branchId.Length != 3)
+            {
+                return BadRequest("branch id length must be 3");
+            }
+            if (string.IsNullOrWhiteSpace(branchName))
+            {
+                return BadRequest("branch name not valid");
+            }
+            _branchService.Update(new UpdateBranchRequestModel
+            {
+                BranchId = branchId,
+                BranchName = branchName
+            });
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [ProducesResponseType<CreateBranchResponseModel>(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult DeleteBranch([Required] string branchId)
+        {
+            if (branchId.Length != 3)
+            {
+                return BadRequest("branch id length must be 3");
+            }
+            _branchService.Delete(new DeleteBranchRequestModel
+            {
+                BranchId = branchId
+            });
+
+            return NoContent();
+        }
     }
 }

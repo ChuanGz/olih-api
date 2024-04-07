@@ -5,6 +5,9 @@ namespace Olih.Api.Business.Interfaces;
 
 public interface IBranchService
 {
-    Task<GetListBranchResponseModel> GetListAsync(GetListBranchRequestModel requestModel);
-    Task<GetOneBranchResponseModel> GetOneAsync(GetOneBranchRequestModel getOneBranchRequestModel);
+    CreateBranchResponseModel Create(CreateBranchRequestModel requestModel);
+    void Delete(DeleteBranchRequestModel requestModel);
+    GetListBranchResponseModel GetList(GetListBranchRequestModel requestModel);
+    GetOneBranchResponseModel GetOne(GetOneBranchRequestModel requestModel);
+    void Update(UpdateBranchRequestModel requestModel);
 }

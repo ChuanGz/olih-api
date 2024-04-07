@@ -5,6 +5,6 @@ namespace Olih.Api.Models.Response
 {
     public class GetOneBranchResponseModel
     {
-        public required BranchDto Branch { get; set; }
+        public BranchDto? Branch { get; set; }
     }
 }

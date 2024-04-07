@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.Api", "Olih.Api\Olih.Api.csproj", "{AEF61B04-EF34-4643-AB44-CCE3E0C4BE9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.ServiceFactories", "Olih.ServiceFactories\Olih.ServiceFactories.csproj", "{F4B7A08C-15B7-466C-91A7-D8E9DF188635}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AEF61B04-EF34-4643-AB44-CCE3E0C4BE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEF61B04-EF34-4643-AB44-CCE3E0C4BE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEF61B04-EF34-4643-AB44-CCE3E0C4BE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B7A08C-15B7-466C-91A7-D8E9DF188635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B7A08C-15B7-466C-91A7-D8E9DF188635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B7A08C-15B7-466C-91A7-D8E9DF188635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B7A08C-15B7-466C-91A7-D8E9DF188635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

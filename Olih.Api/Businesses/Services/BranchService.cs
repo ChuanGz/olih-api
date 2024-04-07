@@ -1,47 +1,51 @@
 using Olih.Api.Business.Interfaces;
-using Olih.Api.Models.DTOs;
 using Olih.Api.Models.Request;
 using Olih.Api.Models.Response;
+using Olih.Api.Businesses.Factories;
 
 namespace Olih.Api.Businesses.Services;
 
 public class BranchService : IBranchService
 {
-    private List<BranchDto> _branches = new List<BranchDto>();
-
-    public BranchService()
+    public CreateBranchResponseModel Create(CreateBranchRequestModel requestModel)
     {
-        _branches.Add(new BranchDto("A", "Branch A"));
-        _branches.Add(new BranchDto("B", "Branch B"));
-        _branches.Add(new BranchDto("C", "Branch C"));
-        _branches.Add(new BranchDto("D", "Branch D"));
+        var created = BranchServiceFactory.CreateBranch(
+            requestModel.BranchId,
+            requestModel.BranchName
+        );
+        return new CreateBranchResponseModel
+        {
+            BranchId = created.BranchId,
+            BranchName = created.BranchName,
+        };
     }
 
-    public async Task<GetListBranchResponseModel> GetListAsync(
-        GetListBranchRequestModel requestModel
-    )
+    public void Delete(DeleteBranchRequestModel requestModel)
     {
-        return await Task.FromResult(
-            new GetListBranchResponseModel
-            {
-                Branches = _branches,
-                PageCount = 1,
-                PageTotal = 1,
-                PageIndex = 1,
-                PageSize = 10,
-            }
-        );
+        BranchServiceFactory.DeleteBranch(requestModel.BranchId);
     }
 
-    public async Task<GetOneBranchResponseModel> GetOneAsync(
-        GetOneBranchRequestModel getOneBranchRequestModel
-    )
+    public GetListBranchResponseModel GetList(GetListBranchRequestModel requestModel)
     {
-        return await Task.FromResult(
-            new GetOneBranchResponseModel
-            {
-                Branch = _branches.Single(b => b.BranchId == getOneBranchRequestModel.BranchId)
-            }
-        );
+        return new GetListBranchResponseModel
+        {
+            Branches = BranchServiceFactory.GetListBranch(
+                requestModel.PageSize,
+                requestModel.PageIndex
+            )
+        };
+    }
+
+    public GetOneBranchResponseModel GetOne(GetOneBranchRequestModel requestModel)
+    {
+        return new GetOneBranchResponseModel
+        {
+            Branch = BranchServiceFactory.GetOneBranch(requestModel.BranchId)
+        };
+    }
+
+    public void Update(UpdateBranchRequestModel requestModel)
+    {
+        BranchServiceFactory.UpdateBranch(requestModel.BranchId, requestModel.BranchName);
     }
 }
