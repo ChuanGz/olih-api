@@ -2,8 +2,8 @@ using System;
 
 namespace Olih.Api.Models.Request
 {
-    public record GetOneBranchRequestModel
+    public class GetOneBranchRequestModel
     {
-        public required int BranchId { get; init; }
+        public required string BranchId { get; init; }
     }
 }

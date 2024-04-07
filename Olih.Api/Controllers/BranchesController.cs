@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Olih.Api.Business.Interfaces;
 using Olih.Api.Models.Request;
@@ -15,10 +17,15 @@ namespace Olih.Api.Controllers
         private readonly ILogger<BranchesController> _logger = logger;
 
         [HttpGet]
-        public async Task<ActionResult<GetListBranchResponseModel>> ListBranchAsync(int? pageIndex, int? pageSize)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType<GetOneBranchResponseModel>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> RetriveListBranchAsync(int? pageIndex, int? pageSize)
         {
 
-            GetListBranchResponseModel queryResult = await _branchService.GetListAsync(new GetListBranchRequestModel{
+            GetListBranchResponseModel queryResult = await _branchService.GetListAsync(new GetListBranchRequestModel
+            {
                 PageIndex = pageIndex ?? 1,
                 PageSize = pageSize ?? 20
             });
@@ -31,13 +38,24 @@ namespace Olih.Api.Controllers
             return Ok(queryResult);
         } 
 
-        [HttpGet("/{id}")]
-        public async Task<ActionResult<GetOneBranchResponseModel>> ListBranchAsync([Required] int id)
+        [HttpGet]
+        [Route("{id}")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType<GetOneBranchResponseModel>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> RetriveOneBranchAsync([Required] string id)
         {
-            GetOneBranchResponseModel queryResult = await _branchService.GetOneAsync(new GetOneBranchRequestModel{
+             if(id.Length>=2)
+            {
+                 return BadRequest();
+            }
+            GetOneBranchResponseModel queryResult = await _branchService.GetOneAsync(new GetOneBranchRequestModel
+            {
                 BranchId = id
             });
 
+           
             if(queryResult == null)
             {
                 return NotFound();
@@ -45,5 +63,6 @@ namespace Olih.Api.Controllers
             
             return Ok(queryResult);
         } 
+
     }
 }

@@ -1,3 +1,6 @@
+using Olih.Api.Business.Interfaces;
+using Olih.Api.Businesses.Services;
+
 namespace Olih.Api
 {
     public class Program
@@ -13,6 +16,9 @@ namespace Olih.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // register
+            builder.Services.AddScoped<IBranchService, BranchService>();
+            // end
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

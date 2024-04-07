@@ -3,5 +3,5 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Olih.Api.Models.Request
 {
-    public record GetListBranchRequestModel : PaginationBasedRequestModel { }
+    public class GetListBranchRequestModel : PaginationBasedRequestModel { }
 }

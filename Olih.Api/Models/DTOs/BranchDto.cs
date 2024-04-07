@@ -2,9 +2,9 @@ using System;
 
 namespace Olih.Api.Models.DTOs
 {
-    public record BranchDto
+    public class BranchDto(string branchId, string branchName)
     {
-        public required string BranchId { get; set; }
-        public required string BranchName { get; set; }
+        public string BranchId { get; set; } = branchId;
+        public string BranchName { get; set; } = branchName;
     }
 }
