@@ -5,7 +5,7 @@ namespace Olih.Api.Models.Response
 {
     public class PaginationBasedResponseModel : PaginationBasedRequestModel
     {
-        public int PageCount { get; set; }
-        public int PageTotal { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalRecords { get; set; }
     }
 }

@@ -30,7 +30,7 @@ public class BranchService : IBranchService
         return new GetListBranchResponseModel
         {
             Branches = BranchServiceFactory.GetListBranch(
-                requestModel.PageSize * requestModel.PageIndex,
+                requestModel.PageSize * requestModel.PageNumber,
                 requestModel.PageSize
             )
         };
