@@ -5,9 +5,9 @@ namespace Olih.Api.Businesses.Factories;
 public static class BranchServiceFactory
 {
 
-    public static List<BranchDto> GetListBranch(int skip, int take)
+    public static List<BranchDto> GetAllBranches()
     {
-        return _branches.Skip(skip).Take(take).ToList();
+        return _branches;
     }
 
     public static BranchDto? GetOneBranch(string branchId)

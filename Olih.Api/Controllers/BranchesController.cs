@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Olih.Api.Business.Interfaces;
+using Olih.Api.Models.DTOs;
 using Olih.Api.Models.Request;
 using Olih.Api.Models.Response;
 
@@ -15,22 +16,24 @@ namespace Olih.Api.Controllers
         private readonly ILogger<BranchesController> _logger = logger;
 
         [HttpGet]
-        [ProducesResponseType<GetListBranchResponseModel>(StatusCodes.Status200OK)]
+        [ProducesResponseType<PagedList<BranchDto>>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
         [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
-        public Results<Ok<GetListBranchResponseModel>, BadRequest<string>, NotFound> RetriveListBranch(int? pageIndex, int? pageSize)
+        public Results<Ok<PagedList<BranchDto>>, BadRequest<string>, NotFound> RetriveListBranch(string? searchText, string? sortByColumn, bool isDesc, int? pageNumber, int? pageSize)
         {
-
-            GetListBranchResponseModel queryResult = _branchService.GetList(new GetListBranchRequestModel
-            {
-                PageNumber = pageIndex ?? 0,
-                PageSize = pageSize ?? 10
-            });
-            if(pageIndex <0 || pageSize <= 0)
+            if(pageNumber <0 || pageSize <= 0)
             {
                 return TypedResults.BadRequest("wrong input prarameter test");
             }
-            if (queryResult == null || queryResult.Branches.Count == 0)
+            PagedList<BranchDto> queryResult = _branchService.GetList(new GetListBranchRequestModel
+            {
+                SearchText = searchText,
+                SortByColumn = sortByColumn,
+                IsDesc = isDesc,
+                PageNumber = pageNumber ?? 0,
+                PageSize = pageSize ?? 10
+            });
+            if (queryResult == null || queryResult.Items.Count == 0)
             {
                 return TypedResults.NotFound();
             }
@@ -73,7 +76,7 @@ namespace Olih.Api.Controllers
             }
             if (string.IsNullOrWhiteSpace(branchName))
             {
-                return TypedResults.BadRequest("branch name not valid");
+                return TypedResults.BadRequest("branch name must not empty or whitespace");
             }
             CreateBranchResponseModel creationResult = _branchService.Create(new CreateBranchRequestModel
             {

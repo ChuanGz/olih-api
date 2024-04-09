@@ -1,3 +1,4 @@
+using Olih.Api.Models.DTOs;
 using Olih.Api.Models.Request;
 using Olih.Api.Models.Response;
 
@@ -7,7 +8,7 @@ public interface IBranchService
 {
     CreateBranchResponseModel Create(CreateBranchRequestModel requestModel);
     void Delete(DeleteBranchRequestModel requestModel);
-    GetListBranchResponseModel GetList(GetListBranchRequestModel requestModel);
+    PagedList<BranchDto> GetList(GetListBranchRequestModel requestModel);
     GetOneBranchResponseModel GetOne(GetOneBranchRequestModel requestModel);
     void Update(UpdateBranchRequestModel requestModel);
 }
