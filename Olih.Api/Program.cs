@@ -1,5 +1,5 @@
-using Olih.Api.Business.Interfaces;
-using Olih.Api.Businesses.Services;
+using Olih.Domain.Interfaces;
+using Olih.Infrastructure.Services;
 
 namespace Olih.Api
 {

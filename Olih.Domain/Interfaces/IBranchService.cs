@@ -1,8 +1,9 @@
-using Olih.Api.Models.DTOs;
-using Olih.Api.Models.Request;
-using Olih.Api.Models.Response;
+using Olih.Common;
+using Olih.Domain.DTOs;
+using Olih.Domain.Request.Branch;
+using Olih.Domain.Response.Branch;
 
-namespace Olih.Api.Business.Interfaces;
+namespace Olih.Domain.Interfaces;
 
 public interface IBranchService
 {

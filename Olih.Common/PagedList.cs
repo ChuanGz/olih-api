@@ -1,4 +1,4 @@
-﻿namespace Olih.Api.Models.Response;
+﻿namespace Olih.Common;
 
 public class PagedList<T>
 {

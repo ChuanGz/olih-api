@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Olih.Common\Olih.Common.csproj" />
+    <ProjectReference Include="..\Olih.Domain\Olih.Domain.csproj" />
+    <ProjectReference Include="..\Olih.Infrastructure\Olih.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace Olih.Api.Models.Request;
+namespace Olih.Domain.Request.Branch;
 
 public class DeleteBranchRequestModel
 {

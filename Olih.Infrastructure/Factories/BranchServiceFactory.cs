@@ -1,6 +1,6 @@
-using Olih.Api.Models.DTOs;
+using Olih.Domain.DTOs;
 
-namespace Olih.Api.Businesses.Factories;
+namespace Olih.Infrastructure.Factories;
 
 public static class BranchServiceFactory
 {
@@ -132,6 +132,6 @@ public static class BranchServiceFactory
             new ("E17", "Branch E17"),
             new ("E18", "Branch E18"),
             new ("E19", "Branch E19"),
-            new ("E20", "Branch E20"),            
+            new ("E20", "Branch E20"),
     ];
 }

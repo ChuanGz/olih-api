@@ -1,6 +1,6 @@
-namespace Olih.Api.Models.Request;
+namespace Olih.Domain.Request.Branch;
 
-public class CreateBranchRequestModel
+public class UpdateBranchRequestModel
 {
     public required string BranchId { get; set; }
     public required string BranchName { get; set; }

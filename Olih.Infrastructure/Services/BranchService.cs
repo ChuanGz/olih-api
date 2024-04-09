@@ -1,12 +1,12 @@
-using Olih.Api.Business.Interfaces;
-using Olih.Api.Models.Request;
-using Olih.Api.Models.Response;
-using Olih.Api.Businesses.Factories;
-using Olih.Api.Models.DTOs;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
+using Olih.Domain.Request.Branch;
+using Olih.Domain.Response.Branch;
+using Olih.Infrastructure.Factories;
+using Olih.Domain.DTOs;
+using Olih.Common;
+using Olih.Domain.Interfaces;
 
-namespace Olih.Api.Businesses.Services;
+namespace Olih.Infrastructure.Services;
 
 public class BranchService : IBranchService
 {
