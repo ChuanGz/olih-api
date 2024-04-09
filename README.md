@@ -1,3 +1,3 @@
 # olih-api
 
-Back end api for OLIH
+Back end api for OLIH solution

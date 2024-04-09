@@ -15,7 +15,7 @@ namespace Olih.Api.Controllers
         private readonly ILogger<BranchesController> _logger = logger;
 
         [HttpGet]
-        [ProducesResponseType<GetOneBranchResponseModel>(StatusCodes.Status200OK)]
+        [ProducesResponseType<GetListBranchResponseModel>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
         [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
         public Results<Ok<GetListBranchResponseModel>, BadRequest<string>, NotFound> RetriveListBranch(int? pageIndex, int? pageSize)
