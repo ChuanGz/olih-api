@@ -1,9 +1,9 @@
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Olih.Api.Controllers
 {
-    public class ItemMasterDatasController
-    {
-        
-    }
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class ItemMasterDatasController { }
 }

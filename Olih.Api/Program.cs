@@ -1,5 +1,4 @@
-using Olih.Domain.Interfaces;
-using Olih.Infrastructure.Services;
+using Olih.Infrastructure;
 
 namespace Olih.Api
 {
@@ -15,10 +14,8 @@ namespace Olih.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddInfrastructureService();
 
-            // register
-            builder.Services.AddScoped<IBranchService, BranchService>();
-            // end
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
