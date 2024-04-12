@@ -1,8 +1,8 @@
 using Olih.Domain.DTOs;
 
-namespace Olih.MockupData.MemoryMockup;
+namespace Olih.MockupData.Memory;
 
-public static class BranchMockupData
+public static class BranchMockSvc
 {
 
     public static List<BranchDto> GetAllBranches()

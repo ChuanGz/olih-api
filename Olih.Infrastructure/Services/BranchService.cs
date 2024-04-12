@@ -4,7 +4,7 @@ using Olih.Domain.Response.Branch;
 using Olih.Domain.DTOs;
 using Olih.Common;
 using Olih.Domain.Interfaces;
-using Olih.MockupData.MemoryMockup;
+using Olih.MockupData.Memory;
 
 namespace Olih.Infrastructure.Services;
 
@@ -12,7 +12,7 @@ public class BranchService : IBranchService
 {
     public CreateBranchResponseModel Create(CreateBranchRequestModel requestModel)
     {
-        var created = BranchMockupData.CreateBranch(requestModel.BranchId, requestModel.BranchName);
+        var created = BranchMockSvc.CreateBranch(requestModel.BranchId, requestModel.BranchName);
         return new CreateBranchResponseModel
         {
             BranchId = created.BranchId,
@@ -22,12 +22,12 @@ public class BranchService : IBranchService
 
     public void Delete(DeleteBranchRequestModel requestModel)
     {
-        BranchMockupData.DeleteBranch(requestModel.BranchId);
+        BranchMockSvc.DeleteBranch(requestModel.BranchId);
     }
 
     public PagedList<BranchDto> GetList(GetListBranchRequestModel requestModel)
     {
-        var branchQuery = BranchMockupData.GetAllBranches().AsQueryable();
+        var branchQuery = BranchMockSvc.GetAllBranches().AsQueryable();
         // step 1, search by text
         if (!string.IsNullOrWhiteSpace(requestModel.SearchText))
         {
@@ -70,12 +70,12 @@ public class BranchService : IBranchService
     {
         return new GetOneBranchResponseModel
         {
-            Branch = BranchMockupData.GetOneBranch(requestModel.BranchId)
+            Branch = BranchMockSvc.GetOneBranch(requestModel.BranchId)
         };
     }
 
     public void Update(UpdateBranchRequestModel requestModel)
     {
-        BranchMockupData.UpdateBranch(requestModel.BranchId, requestModel.BranchName);
+        BranchMockSvc.UpdateBranch(requestModel.BranchId, requestModel.BranchName);
     }
 }

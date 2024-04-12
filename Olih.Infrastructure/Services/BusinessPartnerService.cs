@@ -4,7 +4,7 @@ using Olih.Domain.DTOs;
 using Olih.Domain.Interfaces;
 using Olih.Domain.Request.BusinessPartner;
 using Olih.Domain.Response.BusinessPartner;
-using Olih.MockupData.MemoryMockup;
+using Olih.MockupData.Memory;
 
 namespace Olih.Infrastructure.Services;
 
@@ -12,7 +12,7 @@ public class BusinessPartnerService : IBusinessPartnerService
 {
     public CreateBusinessPartnerResponseModel Create(CreateBusinessPartnerRequestModel requestModel)
     {
-        var created = BusinessPartnerMockupData.CreateBusinessPartner(
+        var created = BusinessPartnerMockSvc.CreateBusinessPartner(
             requestModel.CardCode,
             requestModel.CardName
         );
@@ -26,12 +26,12 @@ public class BusinessPartnerService : IBusinessPartnerService
 
     public void Delete(DeleteBusinessPartnerRequestModel requestModel)
     {
-        BusinessPartnerMockupData.DeleteBusinessPartner(requestModel.CardCode);
+        BusinessPartnerMockSvc.DeleteBusinessPartner(requestModel.CardCode);
     }
 
     public PagedList<BusinessPartnerDto> GetList(GetListBusinessPartnerRequestModel requestModel)
     {
-        var bPQuery = BusinessPartnerMockupData.GetAllBusinessPartner().AsQueryable();
+        var bPQuery = BusinessPartnerMockSvc.GetAllBusinessPartner().AsQueryable();
         // step 1, search by text
         if (!string.IsNullOrWhiteSpace(requestModel.SearchText))
         {
@@ -73,13 +73,13 @@ public class BusinessPartnerService : IBusinessPartnerService
     {
         return new GetOneBusinessPartnerResponseModel
         {
-            BusinessPartner = BusinessPartnerMockupData.GetOneBusinessPartner(requestModel.CardCode)
+            BusinessPartner = BusinessPartnerMockSvc.GetOneBusinessPartner(requestModel.CardCode)
         };
     }
 
     public void Update(UpdateBusinessPartnerRequestModel requestModel)
     {
-        BusinessPartnerMockupData.UpdateBusinessPartner(
+        BusinessPartnerMockSvc.UpdateBusinessPartner(
             requestModel.CardCode,
             requestModel.CardName,
             requestModel.CardNumber

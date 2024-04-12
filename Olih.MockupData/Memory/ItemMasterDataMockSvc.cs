@@ -1,3 +1,3 @@
-namespace Olih.MockupData.MemoryMockup;
+namespace Olih.MockupData.Memory;
 
 public class ItemMasterDataMockupData { }

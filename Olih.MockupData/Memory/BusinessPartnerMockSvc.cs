@@ -1,8 +1,8 @@
 using Olih.Domain.DTOs;
 
-namespace Olih.MockupData.MemoryMockup;
+namespace Olih.MockupData.Memory;
 
-public static class BusinessPartnerMockupData
+public static class BusinessPartnerMockSvc
 {
 
     public static List<BusinessPartnerDto> GetAllBusinessPartner()
@@ -17,7 +17,7 @@ public static class BusinessPartnerMockupData
 
     public static BusinessPartnerDto CreateBusinessPartner(string cardCode, string CardName)
     {
-        _businessPartners.Add(new BusinessPartnerDto { CardCode = cardCode, CardName = CardName , CardNumber = ""});
+        _businessPartners.Add(new BusinessPartnerDto { CardCode = cardCode, CardName = CardName, CardNumber = "" });
         return _businessPartners.Single(x => x.CardCode == cardCode);
     }
 
@@ -34,13 +34,13 @@ public static class BusinessPartnerMockupData
         _businessPartners.RemoveAll(x => x.CardCode == cardCode);
     }
 
-        private static List<BusinessPartnerDto> _businessPartners= 
-        [
-            new BusinessPartnerDto()
+    private static List<BusinessPartnerDto> _businessPartners =
+    [
+        new BusinessPartnerDto()
             {
-                CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+                CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -60,9 +60,9 @@ public static class BusinessPartnerMockupData
                     }
             },
             new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -81,9 +81,9 @@ public static class BusinessPartnerMockupData
                         }
                     }
         },new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -102,9 +102,9 @@ public static class BusinessPartnerMockupData
                         }
                     }
         },new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -123,9 +123,9 @@ public static class BusinessPartnerMockupData
                         }
                     }
         },new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -144,9 +144,9 @@ public static class BusinessPartnerMockupData
                         }
                     }
         },new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -165,9 +165,9 @@ public static class BusinessPartnerMockupData
                         }
                     }
         },new BusinessPartnerDto(){
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -188,9 +188,9 @@ public static class BusinessPartnerMockupData
         },
         new BusinessPartnerDto()
         {
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -211,9 +211,9 @@ public static class BusinessPartnerMockupData
         },
         new BusinessPartnerDto()
         {
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-            CardName = $"Random name {(new Random()).Next(1000,9999)}",
-            CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+            CardName = $"Random name {new Random().Next(1000,9999)}",
+            CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -234,9 +234,9 @@ public static class BusinessPartnerMockupData
         },
         new BusinessPartnerDto()
         {
-            CardCode = "970000" + (new Random()).Next(1000,9999).ToString(),
-                    CardName = $"Random name {(new Random()).Next(1000,9999)}",
-                    CardNumber = $"{(new Random()).Next(1000,9999)}",
+            CardCode = "970000" + new Random().Next(1000,9999).ToString(),
+                    CardName = $"Random name {new Random().Next(1000,9999)}",
+                    CardNumber = $"{new Random().Next(1000,9999)}",
                     Addresses = new List<AddressDto>()
                     {
                         new AddressDto()
@@ -255,6 +255,6 @@ public static class BusinessPartnerMockupData
                         }
                     }
         }
-    ];
+];
 
 }
