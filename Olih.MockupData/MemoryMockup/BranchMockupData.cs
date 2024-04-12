@@ -1,6 +1,6 @@
 using Olih.Domain.DTOs;
 
-namespace Olih.MockupData;
+namespace Olih.MockupData.MemoryMockup;
 
 public static class BranchMockupData
 {
@@ -32,7 +32,7 @@ public static class BranchMockupData
         _branches.RemoveAll(x => x.BranchId == branchId);
     }
 
-    private static readonly List<BranchDto> _branches = [
+    private static List<BranchDto> _branches = [
             new ("A01", "Branch A01"),
             new ("A02", "Branch A02"),
             new ("A03", "Branch A03"),

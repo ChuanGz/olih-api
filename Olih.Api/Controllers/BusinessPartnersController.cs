@@ -54,7 +54,7 @@ namespace Olih.Api.Controllers
             }
             GetOneBusinessPartnerResponseModel queryResult = _businessPartnerService.GetOne(new GetOneBusinessPartnerRequestModel
             {
-  
+  CardCode = id
             });
 
 
@@ -81,7 +81,8 @@ namespace Olih.Api.Controllers
             }
             CreateBusinessPartnerResponseModel creationResult = _businessPartnerService.Create(new CreateBusinessPartnerRequestModel
             {
-
+CardCode = BusinessPartnerId,
+CardName = BusinessPartnerName
             });
             var uri = Url.Action(nameof(RetriveOneBusinessPartner), new { id = creationResult.ToString() });
 
@@ -91,18 +92,21 @@ namespace Olih.Api.Controllers
         [HttpPut]
         [ProducesResponseType<CreateBusinessPartnerResponseModel>(StatusCodes.Status204NoContent)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        public Results<NoContent,BadRequest<string>> UpdateBusinessPartner([Required] string BusinessPartnerId, [Required] string BusinessPartnerName)
+        public Results<NoContent,BadRequest<string>> UpdateBusinessPartner([Required] string cardCode, [Required] string cardName, [Required] string cardNumber)
         {
-            if (BusinessPartnerId.Length != 3)
+            if (cardCode.Length != 3)
             {
                 return TypedResults.BadRequest("BusinessPartner id length must be 3");
             }
-            if (string.IsNullOrWhiteSpace(BusinessPartnerName))
+            if (string.IsNullOrWhiteSpace(cardName))
             {
                 return TypedResults.BadRequest("BusinessPartner name not valid");
             }
             _businessPartnerService.Update(new UpdateBusinessPartnerRequestModel
             {
+                CardCode = cardCode,
+                CardName =cardName,
+                CardNumber = cardNumber
             });
 
             return TypedResults.NoContent();
@@ -111,15 +115,15 @@ namespace Olih.Api.Controllers
         [HttpDelete]
         [ProducesResponseType<CreateBusinessPartnerResponseModel>(StatusCodes.Status204NoContent)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        public Results<NoContent, BadRequest<string>> DeleteBusinessPartner([Required] string BusinessPartnerId)
+        public Results<NoContent, BadRequest<string>> DeleteBusinessPartner([Required] string cardCode)
         {
-            if (BusinessPartnerId.Length != 3)
+            if (cardCode.Length != 3)
             {
                 return TypedResults.BadRequest("BusinessPartner id length must be 3");
             }
             _businessPartnerService.Delete(new DeleteBusinessPartnerRequestModel
             {
-                
+                CardCode = cardCode
             });
 
             return TypedResults.NoContent();

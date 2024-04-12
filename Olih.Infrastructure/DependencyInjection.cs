@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Olih.Domain.Interfaces;
 using Olih.Infrastructure.Services;
@@ -9,7 +8,11 @@ namespace Olih.Infrastructure
     {
         public static IServiceCollection AddInfrastructureService(this IServiceCollection services)
         {
-            return services.AddScoped<IBranchService, BranchService>();
+            services.AddScoped<IBranchService, BranchService>();
+            services.AddScoped<IBusinessPartnerService, BusinessPartnerService>();
+            services.AddScoped<IItemMasterDataService, ItemMasterDataService>();
+
+            return services;
         }
     }
 }
