@@ -1,8 +1,8 @@
 using Olih.Domain.DTOs;
 
-namespace Olih.Infrastructure.Factories;
+namespace Olih.MockupData;
 
-public static class BranchServiceFactory
+public static class BranchMockupData
 {
 
     public static List<BranchDto> GetAllBranches()

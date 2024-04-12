@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Olih.Domain\Olih.Domain.csproj" />
     <ProjectReference Include="..\Olih.Common\Olih.Common.csproj" />
+    <ProjectReference Include="..\Olih.MockupData\Olih.MockupData.csproj" />
   </ItemGroup>
 
   <ItemGroup>
