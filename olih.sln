@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.Infrastructure", "Olih
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.MockupData", "Olih.MockupData\Olih.MockupData.csproj", "{ED20527E-B6B9-4883-B152-C99C46511F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.UnitTest", "Olih.UnitTest\Olih.UnitTest.csproj", "{13675FD0-DE2C-45CD-9007-8EFAEF1DAFEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olih.XUnit", "Olih.XUnit\Olih.XUnit.csproj", "{4790E407-D1DF-49D0-BFEC-2FEBFC9478F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,9 +48,9 @@ Global
 		{ED20527E-B6B9-4883-B152-C99C46511F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED20527E-B6B9-4883-B152-C99C46511F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED20527E-B6B9-4883-B152-C99C46511F57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13675FD0-DE2C-45CD-9007-8EFAEF1DAFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13675FD0-DE2C-45CD-9007-8EFAEF1DAFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13675FD0-DE2C-45CD-9007-8EFAEF1DAFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13675FD0-DE2C-45CD-9007-8EFAEF1DAFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4790E407-D1DF-49D0-BFEC-2FEBFC9478F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4790E407-D1DF-49D0-BFEC-2FEBFC9478F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4790E407-D1DF-49D0-BFEC-2FEBFC9478F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4790E407-D1DF-49D0-BFEC-2FEBFC9478F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

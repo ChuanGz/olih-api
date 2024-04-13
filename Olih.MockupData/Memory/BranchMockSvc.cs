@@ -50,8 +50,18 @@ public static class BranchMockSvc
 
     public static void UpdateBranch(string branchId, string newbranchName)
     {
-        var existed = _branches!.Single(x => x.BranchId == branchId);
+         if (_branches is null)
+        {
+             GetAllBranches();
+        }
+        var existed = _branches.SingleOrDefault(x => x.BranchId == branchId);
+
+        if (existed == null)
+        {
+             throw new ArgumentException("Not Found");
+        }
         existed.BranchName = newbranchName;
+       
     }
     public static void DeleteBranch(string branchId)
     {
