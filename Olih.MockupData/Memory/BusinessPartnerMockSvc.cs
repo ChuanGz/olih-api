@@ -52,7 +52,6 @@ public static class BusinessPartnerMockSvc
 
     public static void DeleteBusinessPartner(string cardCode)
     {
-        var existed = _businessPartners!.SingleOrDefault(x => x.CardCode == cardCode);
         _businessPartners!.RemoveAll(x => x.CardCode == cardCode);
     }
 

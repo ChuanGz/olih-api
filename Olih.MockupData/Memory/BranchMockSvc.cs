@@ -55,7 +55,6 @@ public static class BranchMockSvc
     }
     public static void DeleteBranch(string branchId)
     {
-        var existed = _branches!.SingleOrDefault(x => x.BranchId == branchId);
         _branches!.RemoveAll(x => x.BranchId == branchId);
     }
 
