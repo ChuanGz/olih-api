@@ -4,7 +4,7 @@ namespace Olih.MockupData.Memory;
 
 public static class BusinessPartnerMockSvc
 {
- public static void GenerateSampleBusinessPartners(int count)
+    public static void GenerateSampleBusinessPartners(int count)
     {
         List<BusinessPartnerDto> partners = new List<BusinessPartnerDto>();
 
@@ -17,7 +17,7 @@ public static class BusinessPartnerMockSvc
                 CardNumber = $"CN{i}",
                 Addresses = new List<AddressDto>
                 {
-                    new AddressDto { StreetNo = $"Street {i}", Ward = $"Ward {i}", District = $"{i}", City = $"City {i}", Country = "Country" }
+                    new AddressDto { StreetNo = $"Street {i}", Ward = $"Ward {i}", District = $"District {i}", City = $"City {i}", Country = $"Country {i}" }
                 },
                 CurrentBalance = 1000.0 + i,
                 CreditLimit = 2000.0 + i
@@ -28,7 +28,7 @@ public static class BusinessPartnerMockSvc
     }
     public static List<BusinessPartnerDto> GetAllBusinessPartner()
     {
-       GenerateSampleBusinessPartners(100);
+        GenerateSampleBusinessPartners(100);
         return _businessPartners!;
     }
 

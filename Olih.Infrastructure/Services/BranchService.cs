@@ -35,7 +35,6 @@ public class BranchService : IBranchService
                 x =>
                     x.BranchId.Contains(requestModel.SearchText)
                     || x.BranchName.Contains(requestModel.SearchText)
-                    || x.BranchStatus.Contains(requestModel.SearchText)
             );
         }
 
@@ -60,8 +59,6 @@ public class BranchService : IBranchService
         sortByColumn?.ToLower() switch
         {
             "name" => branch => branch.BranchName,
-            "status" => branch => branch.BranchStatus,
-            "address" => branch => branch.BranchAddress,
             "head_count" => branch => branch.HeadCount,
             _ => branch => branch.BranchId,
         };
