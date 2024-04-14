@@ -30,20 +30,14 @@ public static class BranchMockSvc
 
     public static BranchDto? GetOneBranch(string branchId)
     {
-         if (_branches is null)
-        {
-             GetAllBranches();
-        }
+        _branches ??= new List<BranchDto>();
         return _branches!.SingleOrDefault(x => x.BranchId == branchId);
     }
 
     public static BranchDto CreateBranch(string branchId, string branchName)
     {
         int i = 2000;
-         if (_branches is null)
-        {
-             GetAllBranches();
-        }
+        _branches ??= new List<BranchDto>();
         var branch = new BranchDto
             {
                 BranchId = branchId,
@@ -58,10 +52,7 @@ public static class BranchMockSvc
 
     public static void UpdateBranch(string branchId, string newbranchName)
     {
-         if (_branches is null)
-        {
-             GetAllBranches();
-        }
+         _branches ??= new List<BranchDto>();
         var existed = _branches.SingleOrDefault(x => x.BranchId == branchId);
 
         if (existed == null)
@@ -73,12 +64,9 @@ public static class BranchMockSvc
     }
     public static void DeleteBranch(string branchId)
     {
-         if (_branches is null)
-        {
-             GetAllBranches();
-        }
+        _branches ??= new List<BranchDto>();
         _branches!.RemoveAll(x => x.BranchId == branchId);
     }
 
-    private static List<BranchDto>? _branches;
+    private static List<BranchDto>? _branches = new List<BranchDto>();
 }
