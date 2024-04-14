@@ -25,6 +25,7 @@ public class BranchService_Test
             BranchId = "BPL_001"
         });
 
+        Assert.NotNull(getOne.Branch);
         Assert.NotNull(getOne.Branch.BranchName);
         Assert.NotNull(getOne.Branch.BranchStatus);
     }
