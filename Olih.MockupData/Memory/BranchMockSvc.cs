@@ -57,7 +57,7 @@ public static class BranchMockSvc
 
         if (existed == null)
         {
-             throw new ArgumentException("Not Found");
+             return;
         }
         existed.BranchName = newbranchName;
        

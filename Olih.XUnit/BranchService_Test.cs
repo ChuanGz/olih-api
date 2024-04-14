@@ -44,12 +44,20 @@ public class BranchService_Test
     [Fact]
     public void Test_Update()
     {
+         var created = branchService.Create(new  CreateBranchRequestModel{
+            BranchId = "BPL_900",
+            BranchName = "Unit Test Branch Name"
+        });
+
+        Assert.NotNull(created.BranchId);
+        Assert.NotNull(created.BranchName);
+
         string newBranchName = "Unit test updated BranchName";
         branchService.Update(new UpdateBranchRequestModel{
-            BranchId = "BPL_002",
+            BranchId = "BPL_900",
             BranchName = newBranchName
         });
-        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_002"}) ;   
+        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_900"}) ;   
         Assert.NotNull(againList.Branch);
         Assert.Equal(againList.Branch.BranchName, newBranchName);
     }
@@ -58,7 +66,7 @@ public class BranchService_Test
     {
        branchService.Delete(new DeleteBranchRequestModel{BranchId ="BPL_001"});
 
-        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_002"}) ;   
+        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_001"}) ;   
         Assert.Null(againList.Branch);
     }
 }   
