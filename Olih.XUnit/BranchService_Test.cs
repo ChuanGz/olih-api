@@ -43,14 +43,21 @@ public class BranchService_Test
     [Fact]
     public void Test_Update()
     {
+        string newBranchName = "Unit test updated BranchName";
         branchService.Update(new UpdateBranchRequestModel{
             BranchId = "BPL_002",
-            BranchName = "Unit test updated BranchName"
+            BranchName = newBranchName
         });
+        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_002"}) ;   
+        Assert.NotNull(againList.Branch);
+        Assert.Equal(againList.Branch.BranchName, newBranchName);
     }
     [Fact]
     public void Test_Delete()
     {
-       branchService.Delete(new DeleteBranchRequestModel{BranchId ="BPL_999"});
+       branchService.Delete(new DeleteBranchRequestModel{BranchId ="BPL_001"});
+
+        var againList = branchService.GetOne(new GetOneBranchRequestModel{BranchId = "BPL_002"}) ;   
+        Assert.Null(againList.Branch);
     }
 }   
