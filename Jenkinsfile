@@ -23,10 +23,10 @@ node {
           sh '''
             export PATH=/var/jenkins_home/.dotnet/tools:$PATH
             export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
-            dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"olih-api\"
+            dotnet /var/jenkins_home/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.dll begin /k:\"olih-api\"
             dotnet build --no-incremental
             dotnet test --collect \"Code Coverage\"
-            dotnet ${scannerHome}/SonarScanner.MSBuild.dll end
+            dotnet /var/jenkins_home/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.dll end
             '''
         }
       }
