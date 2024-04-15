@@ -1,32 +1,17 @@
 node {
-    environment {
-        PATH = '/var/jenkins_home/.dotnet/tools:$PATH'
-        PATH = '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
-    }
-
     stage('SCM') {
         checkout scm
       }
-
-    stage('OS-Pre') {
-      sh 'echo $PATH'
-      sh 'whoami'
-    }
     stage('Build') {
-      sh 'echo $PATH'
-      sh 'whoami'
+       changePathValue()
       sh '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet build'
     }
-
     stage('UnitTest') {
-      sh 'echo $PATH'
-      sh 'whoami'
+      changePathValue()
       sh '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura' 
     }
-
     stage('SonarQube Report') {
-      sh 'echo $PATH'
-      sh 'whoami'
+      changePathValue()
       timeout(time: 10, unit: 'MINUTES') {
         def scannerHome = tool 'SonarScanner for MSBuild'
         withSonarQubeEnv() {
@@ -37,5 +22,14 @@ node {
         }
       }
     }
-  
+  void changePathValue() {
+    try {
+      PATH = '/var/jenkins_home/.dotnet/tools:$PATH'
+      PATH = '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
+      sh 'echo $PATH'
+      sh 'whoami'
+    } catch(ex) {
+      error("Error Details: ${ex.getMessage()}")
+    }
+  }
 }
