@@ -7,12 +7,12 @@ node {
         dotnet build
         '''
     }
-    stage('UnitTesta') {
+    stage('UnitTest') {
        sh '''
         dotnet test --collect:\"Code Coverage\"
         '''
     }   
-    stage('Analysis & Report') {
+    stage('Code Analysis') {
       timeout(time: 10, unit: 'MINUTES') {
         withSonarQubeEnv() {
           sh '''
