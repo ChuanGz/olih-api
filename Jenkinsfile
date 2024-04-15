@@ -13,7 +13,7 @@ node {
        sh '''
         export PATH=/var/jenkins_home/.dotnet/tools:$PATH
         export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
-        dotnet test --collect:"Code Coverage"
+        dotnet test --collect:\"Code Coverage\"
         '''
     }
     stage('Analysis & Report') {
@@ -23,9 +23,9 @@ node {
           sh '''
             export PATH=/var/jenkins_home/.dotnet/tools:$PATH
             export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
-            dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"olih-api\" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+            dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"olih-api\"
             dotnet build --no-incremental
-            dotnet-coverage collect \"dotnet test\" -f xml -o \"coverage.xml\"
+            dotnet test --collect \"Code Coverage\"
             dotnet ${scannerHome}/SonarScanner.MSBuild.dll end
             '''
         }
