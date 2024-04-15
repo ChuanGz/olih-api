@@ -25,10 +25,12 @@ node {
 }
 void changePathValue() {
     try {
-      sh 'export PATH=/var/jenkins_home/.dotnet/tools:$PATH'
-      sh 'export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
-      sh 'echo $PATH'
-      sh 'whoami'
+      sh '''
+        export PATH=/var/jenkins_home/.dotnet/tools:$PATH
+        export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
+        echo $PATH 
+        whoami
+        '''
     } catch(ex) {
       error("Error Details: ${ex.getMessage()}")
     }
