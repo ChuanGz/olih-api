@@ -4,11 +4,11 @@ node {
       }
 
     stage('.NET Build') {
-         sh "dotnet build"
+         sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet build"
       }
 
     stage('.NET Unit Test') {
-         sh "dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" 
+         sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" 
       }
 
     stage('SonarQube Report') {
