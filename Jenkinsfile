@@ -1,6 +1,5 @@
 node {
-  stages{
-    stage('Code Checkout') {
+   stage('Code Checkout') {
         checkout scm
       }
 
@@ -23,7 +22,5 @@ node {
         }
       }
     }
-
-  }
   
 }
