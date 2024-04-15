@@ -25,8 +25,8 @@ node {
 }
 void changePathValue() {
     try {
-      PATH = '/var/jenkins_home/.dotnet/tools:$PATH'
-      PATH = '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
+      sh 'export PATH=/var/jenkins_home/.dotnet/tools:$PATH'
+      sh 'export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
       sh 'echo $PATH'
       sh 'whoami'
     } catch(ex) {
