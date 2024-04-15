@@ -2,7 +2,16 @@ node {
     stage('SCM') {
         checkout scm
       }
-   
+    stage('Build') {
+      sh '''
+        dotnet build
+        '''
+    }
+    stage('UnitTest') {
+       sh '''
+        dotnet test --collect:\"Code Coverage\"
+        '''
+    }   
     stage('Analysis & Report') {
       timeout(time: 10, unit: 'MINUTES') {
         withSonarQubeEnv() {
