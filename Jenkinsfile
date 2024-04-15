@@ -3,12 +3,18 @@ node {
         checkout scm
       }
     stage('Build') {
-       changePathValue()
-      sh '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet build'
+      sh '''
+        export PATH=/var/jenkins_home/.dotnet/tools:$PATH
+        export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
+        dotnet build
+        '''
     }
     stage('UnitTest') {
-      changePathValue()
-      sh '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura' 
+       sh '''
+        export PATH=/var/jenkins_home/.dotnet/tools:$PATH
+        export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
+        dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+        '''
     }
     stage('SonarQube Report') {
       changePathValue()
@@ -28,8 +34,6 @@ void changePathValue() {
       sh '''
         export PATH=/var/jenkins_home/.dotnet/tools:$PATH
         export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
-        echo $PATH 
-        whoami
         '''
     } catch(ex) {
       error("Error Details: ${ex.getMessage()}")
