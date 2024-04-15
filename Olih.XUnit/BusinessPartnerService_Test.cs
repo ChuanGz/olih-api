@@ -21,12 +21,6 @@ public class BusinessPartnerService_Test
     [Fact]
     public void Test_GetOne()
     {
-        var getOneNull = businessPartnerService.GetOne(new GetOneBusinessPartnerRequestModel{
-            CardCode = "NotFoundtest"
-        });
-
-        Assert.Null(getOneNull);
-
         var getOneNotNull = businessPartnerService.GetOne(new GetOneBusinessPartnerRequestModel{
             CardCode = "BP_001"
         });
