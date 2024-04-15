@@ -1,4 +1,4 @@
-namespace Olih.Domain.Interfaces;
+namespace Olih.Domain.Request.BusinessPartner;
 
 public class UpdateBusinessPartnerRequestModel
 {
