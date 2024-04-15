@@ -1,11 +1,12 @@
 node {
-   stage('SCM') {
-        checkout scm
-      }
     environment {
         PATH = '/var/jenkins_home/.dotnet/tools:$PATH'
         PATH = '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
     }
+
+    stage('SCM') {
+        checkout scm
+      }
 
     stage('OS-Pre') {
       sh 'echo $PATH'
