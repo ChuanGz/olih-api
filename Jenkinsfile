@@ -1,13 +1,13 @@
 node {
-   stage('Code Checkout') {
+   stage('SCM') {
         checkout scm
       }
 
-    stage('.NET Build') {
+    stage('Build') {
          sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet build"
       }
 
-    stage('.NET Unit Test') {
+    stage('UnitTest') {
          sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" 
       }
 
@@ -18,6 +18,7 @@ node {
           sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"olih-api\" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml"
           sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet build --no-incremental"
           sh 'echo $PATH'
+          sh 'whoami'
           sh "/var/jenkins_home/.dotnet/tools/dotnet-coverage collect \"dotnet test\" -f xml -o \"coverage.xml\"" 
           sh "/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux/dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
         }
