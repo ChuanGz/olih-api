@@ -13,7 +13,7 @@ node {
        sh '''
         export PATH=/var/jenkins_home/.dotnet/tools:$PATH
         export PATH=/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH
-        dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+        dotnet test --collect:"Code Coverage, Performance"
         '''
     }
     stage('Analysis & Report') {
