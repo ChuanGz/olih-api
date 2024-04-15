@@ -9,10 +9,10 @@ node {
         withSonarQubeEnv() {
           sh '''
             export PATH=/var/jenkins_home/.dotnet/tools:$PATH
-            dotnet /var/jenkins_home/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.dll begin /k:\"olih-api\" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+            dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"olih-api\" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
             dotnet build --no-incremental
             dotnet-coverage collect "dotnet test" -f xml -o \"coverage.xml\"
-            dotnet /var/jenkins_home/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.dll end
+            dotnet ${scannerHome}/SonarScanner.MSBuild.dll end
             '''
         }
       }
