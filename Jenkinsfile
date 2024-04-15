@@ -22,7 +22,8 @@ node {
         }
       }
     }
-  void changePathValue() {
+}
+void changePathValue() {
     try {
       PATH = '/var/jenkins_home/.dotnet/tools:$PATH'
       PATH = '/var/jenkins_home/tools/io.jenkins.plugins.dotnet.DotNetSDK/dotnet_8_linux:$PATH'
@@ -32,4 +33,3 @@ node {
       error("Error Details: ${ex.getMessage()}")
     }
   }
-}
