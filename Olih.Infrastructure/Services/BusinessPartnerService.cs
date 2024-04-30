@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Olih.Common;
 using Olih.Domain.DTOs;
-using Olih.Domain.Interfaces;
+using Olih.Domain.Interfaces.Services;
 using Olih.Domain.Request.BusinessPartner;
 using Olih.Domain.Response.BusinessPartner;
 using Olih.MockupData.Memory;

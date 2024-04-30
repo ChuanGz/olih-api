@@ -1,8 +1,9 @@
+using Olih.Common;
+
 namespace Olih.Domain.Entities;
 
-public class BusinessPartner
+public class BusinessPartner : BaseEntity
 {
-    public required string Id { get; set; }
     public required string CardCode { get; set; }
     public required string CardName { get; set; }
     public required string CardNumber { get; set; }

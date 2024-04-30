@@ -3,8 +3,8 @@ using Olih.Domain.Request.Branch;
 using Olih.Domain.Response.Branch;
 using Olih.Domain.DTOs;
 using Olih.Common;
-using Olih.Domain.Interfaces;
 using Olih.MockupData.Memory;
+using Olih.Domain.Interfaces.Services;
 
 namespace Olih.Infrastructure.Services;
 

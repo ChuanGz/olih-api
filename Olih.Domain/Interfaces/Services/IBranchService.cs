@@ -3,7 +3,7 @@ using Olih.Domain.DTOs;
 using Olih.Domain.Request.Branch;
 using Olih.Domain.Response.Branch;
 
-namespace Olih.Domain.Interfaces;
+namespace Olih.Domain.Interfaces.Services;
 
 public interface IBranchService
 {

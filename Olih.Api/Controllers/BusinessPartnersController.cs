@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Olih.Common;
 using Olih.Domain.DTOs;
-using Olih.Domain.Interfaces;
+using Olih.Domain.Interfaces.Services;
 using Olih.Domain.Request.BusinessPartner;
 using Olih.Domain.Response.BusinessPartner;
 

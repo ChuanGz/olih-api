@@ -1,7 +1,8 @@
+using Olih.Common;
+
 namespace Olih.Domain.Entities;
-public class ItemMasterDataDto
+public class Product : BaseEntity
 {
-    public string? Id { get; set; }
     public string? ItemCode { get; set; }
     public string? ItemName { get; set; }
     public string? ItemDescription { get; set; }

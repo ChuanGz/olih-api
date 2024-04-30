@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Olih.Domain.Interfaces;
+using Olih.Domain.Interfaces.Services;
 using Olih.Infrastructure.Services;
 
 namespace Olih.Infrastructure

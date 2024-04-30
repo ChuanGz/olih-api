@@ -1,7 +1,8 @@
+using Olih.Common;
+
 namespace Olih.Domain.Entities;
-public class Address
+public class Address : BaseEntity
 {
-    public string? Id { get; set; }
     public string? StreetNo { get; set; }
     public string? Ward { get; set; }
     public string? District { get; set; }

@@ -3,7 +3,7 @@ using Olih.Domain.DTOs;
 using Olih.Domain.Request.ItemMasterData;
 using Olih.Domain.Response.ItemMasterData;
 
-namespace Olih.Domain.Interfaces;
+namespace Olih.Domain.Interfaces.Services;
 
 public interface IItemMasterDataService
 {

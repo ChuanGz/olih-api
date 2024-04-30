@@ -3,7 +3,7 @@ using Olih.Domain.DTOs;
 using Olih.Domain.Request.BusinessPartner;
 using Olih.Domain.Response.BusinessPartner;
 
-namespace Olih.Domain.Interfaces;
+namespace Olih.Domain.Interfaces.Services;
 
 public interface IBusinessPartnerService
 {
