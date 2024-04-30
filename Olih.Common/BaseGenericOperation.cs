@@ -14,7 +14,7 @@ public abstract class BaseGenericOperation<TKey, TModel, TRepository>(TRepositor
 
     public virtual async Task<TModel> GetAsync(TKey key) => await repository.GetAsync(key);
 
-    public virtual async Task<IEnumerable<TModel>> ListAsync() => await repository.GetAllAsync();
+    public virtual async Task<IEnumerable<TModel>> GetAllAsync() => await repository.GetAllAsync();
 
     public virtual async Task<IEnumerable<TModel>> UpdateAsync(IDictionary<TKey, TModel> models) => await repository.UpdateAsync(models);
 

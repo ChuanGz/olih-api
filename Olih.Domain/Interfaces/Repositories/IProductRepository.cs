@@ -4,5 +4,4 @@ namespace Olih.Domain.Interfaces.Repositories;
 
 public interface IProductRepository : IRepository<string, Product>
 {
-
 }

@@ -2,7 +2,7 @@
 
 public interface IGenericOperation<TKey, TModel> where TModel : BaseEntity
 {
-    Task<IEnumerable<TModel>> ListAsync();
+    Task<IEnumerable<TModel>> GetAllAsync();
 
     Task<TModel> GetAsync(TKey key);
 
